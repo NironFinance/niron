@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/niron/static/css/main.ba33031d.chunk.css",
+    "main.css": "/niron/static/css/main.11dc850c.chunk.css",
     "main.js": "/niron/static/js/main.c6ba3909.chunk.js",
     "main.js.map": "/niron/static/js/main.c6ba3909.chunk.js.map",
     "runtime-main.js": "/niron/static/js/runtime-main.44ebb7ca.js",
@@ -10,7 +10,7 @@
     "static/js/2.47e35b33.chunk.js.map": "/niron/static/js/2.47e35b33.chunk.js.map",
     "index.html": "/niron/index.html",
     "static/css/2.61b4cb56.chunk.css.map": "/niron/static/css/2.61b4cb56.chunk.css.map",
-    "static/css/main.ba33031d.chunk.css.map": "/niron/static/css/main.ba33031d.chunk.css.map",
+    "static/css/main.11dc850c.chunk.css.map": "/niron/static/css/main.11dc850c.chunk.css.map",
     "static/js/2.47e35b33.chunk.js.LICENSE.txt": "/niron/static/js/2.47e35b33.chunk.js.LICENSE.txt",
     "static/media/app.css": "/niron/static/media/bgniron.f3d6f159.jpg"
   },
@@ -18,7 +18,7 @@
     "static/js/runtime-main.44ebb7ca.js",
     "static/css/2.61b4cb56.chunk.css",
     "static/js/2.47e35b33.chunk.js",
-    "static/css/main.ba33031d.chunk.css",
+    "static/css/main.11dc850c.chunk.css",
     "static/js/main.c6ba3909.chunk.js"
   ]
 }
