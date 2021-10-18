@@ -10,21 +10,16 @@ import {
 
 function InputComp() {
 
-  let interv = null;
   let accountAd;
   const [account, setAccount] = useState("Connect To Wallet");
+  let [tokenholdings, setTokens] = useState(0);
   const [network, setNetwork] = useState(null);
-  const [enterlottery, setlottery] = useState();
   const [value, setValue] = useState(0);
 
 
   const [numberofTokens, setNumberofTokens] = useState(0);
   const [rewards, setRewards] = useState(0);
-  // const [totalSupply, setTotalSupply] = useState(0);
-  /*
-  const [players, setPlayers] = useState(0);
-  const [players, setPlayers] = useState(0);
-  */
+
 
   const loadWeb3 = async () => {
     let isConnected = false;
@@ -146,19 +141,11 @@ function InputComp() {
       console.log("accountDetails", accountAd);
 
       const web3 = window.web3;
-      let contract = new web3.eth.Contract(contractabi, contractAddress);
-      let accountDetails = await contract.methods.dividendsOf(accountAd).call();
-      console.log("stakeValue", accountDetails);
-      setRewards(accountDetails);
-
-      accountDetails = await contract.methods.totalDistributions().call();
-      console.log("totalDistributions", accountDetails);
-      // setTotalBnbDsitributed(accountDetails);
-
+      let contract = new web3.eth.Contract(tokenabi, tokenAddress);
 
       contract = new web3.eth.Contract(tokenabi, tokenAddress);
-      accountDetails = await contract.methods.balanceOf(accountAd).call();
-      console.log("balanceOf", accountDetails);
+      setTokens = await contract.methods.balanceOf(accountAd).call();
+      console.log("balanceOf", setTokens);
       // setWalletMoney(accountDetails);
     } catch (e) {
       console.log("error", e);
@@ -166,11 +153,11 @@ function InputComp() {
   };
 
 
-  const stake = async () => {
+  const migrate = async () => {
     try {
       const web3 = window.web3;
       let contract = new web3.eth.Contract(contractabi, contractAddress);
-      let accountDetails = await contract.methods.stake(
+      let accountDetails = await contract.methods.migrateToV2(
         numberofTokens
       )
         .send({
@@ -182,27 +169,12 @@ function InputComp() {
     }
   };
 
-  const unstake = async () => {
+  const approve = async () => {
     try {
       const web3 = window.web3;
-      let contract = new web3.eth.Contract(contractabi, contractAddress);
-      let accountDetails = await contract.methods.unstake(
-        numberofTokens
-      )
-        .send({
-          from: account
-        });
-      console.log("accountDetails", accountDetails);
-    } catch (e) {
-      console.log("error", e);
-    }
-  };
-  const withdraw = async () => {
-    try {
-      const web3 = window.web3;
-      let contract = new web3.eth.Contract(contractabi, contractAddress);
-      let accountDetails = await contract.methods.withdraw(
-        numberofTokens
+      let contract = new web3.eth.Contract(tokenabi, tokenAddress);
+      let accountDetails = await contract.methods.approve(
+          contractAddress, tokenholdings
       )
         .send({
           from: account
@@ -220,7 +192,7 @@ function InputComp() {
       } else {
         loadWeb3();
       }
-    }, 1000);
+    }, 100000);
   }, []);
 
 
@@ -229,32 +201,24 @@ function InputComp() {
     <>
       <div className="Row1_Main">
         <div class=" container">
-          <div class="row">
-            <div class="col-12 mt-5 pb-3">
+            <div class="col-md mt-5 pb-md-5">
               <div className="inputComp_Main_container">
                 <div className="inputComp_Main">
-                  <div className="withdraw_Class">
-                    <h5>Rewards: <span>{rewards}</span> ETH</h5>
-                    <button className="btn " onClick={withdraw}>Withdraw</button>
-                  </div>
-                  <hr />
+                  <h5 >You can swap this amount of Tokens: {tokenholdings}</h5>
+                  <hr></hr>
                   <div className="inpo_Main">
-                    <div className="upperBtnPair">
-                      <button className="btn btn-success" onClick={stake}>STAKE</button>
-                      <button className="btn btn-success" onClick={unstake}>UNSTAKE</button>
-                    </div>
+                    <h6>Your connected Wallet is: {account}</h6>
                     <div className="input_div">
                       <input className="w-100" type="text" name="" id="" onChange={(e) => { setNumberofTokens(e.target.value) }} />
                     </div>
                     <div className="upperBtnPair">
-                      <button className="btn btnclor" onClick={stake}>STAKE</button>
-                      <button className="btn btnclor" onClick={unstake}>UNSTAKE</button>
+                      <button className="btn btnclor" onClick={approve}>APPROVE</button>
+                      <button className="btn btnclor" onClick={migrate}>SWAP</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
 

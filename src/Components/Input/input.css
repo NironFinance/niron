@@ -1,15 +1,14 @@
 .inputComp_Main_container{
-    margin-top: -30px;
-    background-color: black;
+    margin-top: 100px;
     color: white;
     /* overflow: hidden; */
 }
 .inputComp_Main{
     border-radius: 10px;
-    border: 1px solid green;
-    padding: 10px;
+    padding: 50px;
+    mso-bidi-font-style: italic;
     font-weight: bolder !important;
-    background-color: rgb(56, 56, 56);
+    background-color: dimgrey;
 }
 .withdraw_Class{
     display: flex;
@@ -19,7 +18,7 @@
 }
 .withdraw_Class>button{
     color: white!important;
-    background-color: green !important;
+    background-color: yellowgreen !important;
 }
 .upperBtnPair{
     display: flex;
@@ -28,6 +27,7 @@
 .upperBtnPair>button{
     margin-right: 19px;
     font-family: 'Montserrat', sans-serif;
+
 }
 .inpo_Main{
     display: flex;
@@ -43,14 +43,14 @@
 }
 .input_div>input{
     /* width:fit-content!important; */
-    color: green;
+
     padding: 10px;
     font-weight: bold;
     font-size: x-large;
 }
 .btnclor{
     color: white!important;
-    background-color: green !important;
+    background-color: yellowgreen !important;
     font-family: 'Baloo Tammudu 2', cursive;
     margin-bottom: 20px;
 }
@@ -67,12 +67,11 @@
 
 @media(max-width:570px){
     .input_div>input{
-        color: green;
+        color: yellowgreen;
         padding: 4px;
     }
     .inputComp_Main_container{
         margin-top: -10px;
-        background-color: black;
-        color: white;
+
     }
 }
